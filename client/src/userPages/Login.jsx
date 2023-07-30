@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
 //assets
 import guser from "../assets/guser.svg";
 import passwordpic from "../assets/password.svg";
 
+//api
+import { getAccessToken, getUserData } from "../actions/github";
+const CLIENT_ID = "527ea110abf67e712d0b";
 const Login = () => {
+  const [rerender, setRerender] = useState(false);
+  const [userData, setUserData] = useState({});
+
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -18,6 +25,44 @@ const Login = () => {
     });
   };
 
+  const handleLogin = () => {
+    window.location.assign(
+      `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}`
+    );
+  };
+
+  const handleUserData = async () => {
+    try {
+      const response = await getUserData(localStorage.getItem("accessToken"));
+      console.log(response);
+      setUserData(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const codeParams = urlParams.get("code");
+    console.log(codeParams);
+    if (codeParams && localStorage.getItem("accessToken") === null) {
+      async function handleAccessToken() {
+        try {
+          const response = await getAccessToken(codeParams);
+
+          if (response.data.access_token) {
+            localStorage.setItem("accessToken", response.data.access_token);
+            setRerender(!rerender);
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      handleAccessToken();
+    }
+  }, []);
+
   return (
     <>
       <div className="mainloginDiv">
@@ -28,6 +73,32 @@ const Login = () => {
             </div>
           </div>
           <div className="smallDiv">
+            {localStorage.getItem("accessToken") ? (
+              <>
+                <h1>We have the access token</h1>
+                <button
+                  onClick={() => {
+                    localStorage.removeItem("accessToken");
+                    setRerender(!rerender);
+                  }}
+                >
+                  Log out
+                </button>
+                <h1>Get user data from API</h1>
+                <button onClick={handleUserData}>Get Data</button>
+                {userData.login ? (
+                  <>
+                    <h3 style={{ color: "red" }}>Hi {userData.login}</h3>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </>
+            ) : (
+              <button onClick={handleLogin} variant="contained">
+                Login with GitHub
+              </button>
+            )}
             <div className="input-container">
               {/*   <i className="inputimgback">
                 <EmailIcon className="inputimg" />
@@ -74,10 +145,15 @@ const Login = () => {
         <div style={{ marginTop: "35px" }}>
           <Link className="l1">
             <button style={{ backgroundColor: bcolor }} className="btn1">
-              Login
+              Login1
             </button>
           </Link>
-          <button onClick={() => setBColor("#2683ff")}>color: {bcolor}</button>
+          <button className="option" onClick={() => setBColor("#2683ff")}>
+            color: {bcolor}
+          </button>
+          <button className="option" onClick={() => setBColor("#2683ff")}>
+            color: {bcolor}
+          </button>
         </div>
 
         {/* <div className="mainimgDiv">

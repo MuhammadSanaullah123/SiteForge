@@ -1,0 +1,2 @@
+1.npm init --yes
+2. npm install body-parser cors express node-fetch
