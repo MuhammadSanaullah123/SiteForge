@@ -270,3 +270,13 @@
 }
 
 /*---------------------------- CSS CODE END FOR USER:LOGIN PAGE-------------------------- */
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.47);
+  padding: 20px 10px 10px 10px;
+}

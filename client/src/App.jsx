@@ -6,12 +6,13 @@ import {
 } from "react-router-dom";
 import "./App.scss";
 import Login from "./userPages/Login";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <>
       <Router>
-        {/*   <Navbar /> */}
+        <Navbar />
 
         <Routes>
           <Route exact path="/login" element={<Login />} />

@@ -1,12 +1,12 @@
 const express = require("express");
 const cors = require("cors");
-const fetch = (...args) =>
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const { response } = require("express");
 
 const app = express();
 app.use(cors());
+app.use(express.json());
+app.use(cookieParser());
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => res.redirect("/login"));

@@ -8,6 +8,7 @@ import passwordpic from "../assets/password.svg";
 //api
 import { getAccessToken, getUserData } from "../actions/github";
 const CLIENT_ID = "527ea110abf67e712d0b";
+const scope = "public_repo"; // or "repo" for private repositories
 const Login = () => {
   const [rerender, setRerender] = useState(false);
   const [userData, setUserData] = useState({});
@@ -27,7 +28,7 @@ const Login = () => {
 
   const handleLogin = () => {
     window.location.assign(
-      `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}`
+      `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=${scope}`
     );
   };
 
@@ -145,12 +146,9 @@ const Login = () => {
         <div style={{ marginTop: "35px" }}>
           <Link className="l1">
             <button style={{ backgroundColor: bcolor }} className="btn1">
-              Login1
+              Login
             </button>
           </Link>
-          <button className="option" onClick={() => setBColor("#2683ff")}>
-            color: {bcolor}
-          </button>
           <button className="option" onClick={() => setBColor("#2683ff")}>
             color: {bcolor}
           </button>
