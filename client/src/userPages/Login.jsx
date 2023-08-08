@@ -35,7 +35,7 @@ const Login = () => {
   const handleUserData = async () => {
     try {
       const response = await getUserData(localStorage.getItem("accessToken"));
-      console.log(response);
+
       setUserData(response.data);
     } catch (err) {
       console.error(err);

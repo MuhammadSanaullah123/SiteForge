@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
+//assets
+import logo from "../assets/logo-no-background.svg";
 
 //api
 import { createRepo, updateRepo } from "../actions/github";
@@ -38,9 +41,34 @@ const Navbar = () => {
   };
   return (
     <div id="navbar">
-      <h1 style={{ color: "red" }}>NAVBAR</h1>
-      <button onClick={handleSubmit}>Finish</button>
-      <button onClick={handleUpdate}>PUSH CODE</button>
+      <img
+        onClick={() => {
+          window.scrollTo(0, 0);
+        }}
+        src={logo}
+        alt="Website Logo"
+      />
+      {/* <button onClick={handleSubmit}>Finish</button>
+      <button onClick={handleUpdate}>PUSH CODE</button> */}
+      <div id="linkdiv">
+        <Link>Templates</Link>
+        <Link
+          onClick={() =>
+            document.getElementById("footer").scrollIntoView({
+              behavior: "smooth",
+            })
+          }
+        >
+          About
+        </Link>
+        <Link> Contact</Link>
+      </div>
+
+      <button>
+        <i className="fa-brands fa-github githubimg"></i>
+        <p>Login</p>
+        <i className="fa-solid fa-angles-right btnimg"></i>
+      </button>
     </div>
   );
 };

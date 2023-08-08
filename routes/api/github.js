@@ -26,16 +26,10 @@ router.get("/getAccessToken", async (req, res) => {
       return response.json();
     })
     .then((data) => {
-      console.log("data");
-
-      console.log(data);
-
-      res.cookie("accessToken", accessToken, { httpOnly: true, secure: true });
+      res.json(data);
     })
-    .catch((err) => {
-      console.log("err");
-
-      console.error(err);
+    .catch((error) => {
+      console.error(error);
     });
 });
 
@@ -56,11 +50,10 @@ router.get("/getUserData", async (req, res) => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       res.json(data);
     })
-    .catch((err) => {
-      console.error(err);
+    .catch((error) => {
+      console.error(error);
     });
 });
 

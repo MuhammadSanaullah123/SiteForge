@@ -1,11 +1,8 @@
 #root {
   max-width: 1600px;
   margin: 0 auto;
-  --primary: #ff5e00; //primary color
-  --secondary: #2683ff; // secondary color
-  --primary-color: #17a2b8;
-  --dark-color: #343a40;
-  --light-color: #f4f4f4;
+  --primary: #2683ff; //primary color
+  --secondary: #046380; // secondary color
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
@@ -271,12 +268,575 @@
 
 /*---------------------------- CSS CODE END FOR USER:LOGIN PAGE-------------------------- */
 
+/*---------------------------- CSS CODE START FOR USER:Navbar Component----------------- */
+/***********************************************************************************/
 #navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
-  background-color: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.47);
+  height: 40px;
+  background-color: var(--primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.47);
+  box-shadow: 0px 1px 5px 0px #000;
   padding: 20px 10px 10px 10px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  img {
+    height: 30px;
+    cursor: pointer;
+  }
+  img:hover {
+    transform: scale(1.02);
+    transition: transform ease 1s;
+  }
+  #linkdiv {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    a {
+      font-family: "Inter";
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      text-decoration: none;
+    }
+    a::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #fff; /* Change this to your desired underline color */
+      transition: width 0.3s ease;
+    }
+
+    a:hover::before {
+      width: 100%;
+      left: 0;
+    }
+  }
+  button {
+    display: flex;
+    align-items: center;
+    width: 155px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: transparent;
+    .githubimg {
+      font-size: 28px;
+    }
+    p {
+      font-family: "Inter";
+      margin: 0 5px 0 20px;
+    }
+  }
+  button:hover {
+    color: var(--primary);
+    background-color: #fff;
+    transition: all ease 0.3s;
+    img path {
+      fill: var(--primary);
+    }
+  }
+  .btnimg {
+    transition: opacity 0.5s ease;
+    animation: moveAndFade 1.5s infinite;
+    font-size: 20px;
+  }
+  .btn:hover > .btnimg {
+    color: #000;
+  }
+  @keyframes moveAndFade {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    25% {
+      opacity: 1;
+      transform: translateX(100%);
+    }
+    50% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    75% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
+/*---------------------------- CSS CODE END FOR USER:Navbar Component-------------------------- */
+
+/*---------------------------- CSS CODE START FOR USER:Footer Component----------------- */
+/***********************************************************************************/
+
+#footer {
+  display: flex;
+  background-color: var(--primary);
+  height: 250px;
+  padding: 20px;
+  justify-content: space-around;
+  #footerd1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 30%;
+    img {
+      height: 30px;
+      cursor: pointer;
+    }
+    img:hover {
+      transform: scale(1.02);
+      transition: all ease 1s;
+    }
+    h1 {
+      font-size: 20px;
+    }
+    .fa-heart:hover {
+      color: rgb(255, 121, 144);
+    }
+    .fa-screwdriver:hover {
+      color: rgb(46, 46, 46);
+    }
+  }
+  #footerd2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 120px;
+    a {
+      font-family: "Inter";
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      text-decoration: none;
+    }
+    a::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #fff;
+      transition: width 0.3s ease;
+    }
+
+    a:hover::before {
+      width: 100%;
+      left: 0;
+    }
+  }
+  #footerd3 {
+    display: flex;
+    flex-direction: column;
+    height: 120px;
+    justify-content: space-between;
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 155px;
+      height: 50px;
+      border-radius: 10px;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      background-color: transparent;
+      .githubimg {
+        font-size: 28px;
+        margin-right: 10px;
+      }
+    }
+
+    #gitbtn {
+      background-color: rgb(82, 82, 82);
+    }
+    #gitbtn:hover {
+      color: rgb(82, 82, 82);
+      background-color: #fff;
+      transition: all ease-in-out 0.3s;
+      img path {
+        fill: rgb(82, 82, 82);
+      }
+    }
+    #netbtn {
+      padding: 25px;
+      background-color: #fff;
+      border: 1px solid #fff;
+    }
+    #netbtn:hover {
+      background-color: transparent;
+      transition: all ease-in-out 0.3s;
+    }
+  }
+}
+
+/*---------------------------- CSS CODE END FOR USER:Footer Component-------------------------- */
+
+/*---------------------------- CSS CODE START FOR USER:Contact Component----------------- */
+/***********************************************************************************/
+#contact {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--primary);
+  transition: all ease 0.3s;
+  border-radius: 8px;
+  z-index: 100;
+  padding: 10px;
+  justify-content: space-around;
+  #headingdiv {
+    width: 90%;
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      font-size: 25px;
+      font-weight: 600;
+      text-align: start !important;
+    }
+    .crossIcon {
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+      align-self: baseline;
+    }
+    .crossIcon:hover {
+      transition: all ease 0.2s;
+      transform: scale(1.1);
+    }
+  }
+
+  #contactd1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    width: 90%;
+    input {
+      margin-bottom: 15px;
+      width: 100%;
+      height: 35px;
+      border-radius: 6px;
+      border: 0;
+      color: rgb(57, 57, 57);
+      font-family: "Inter";
+      font-weight: 500;
+      padding: 5px;
+    }
+
+    textarea {
+      width: 100%;
+      border-radius: 6px;
+      color: rgb(57, 57, 57);
+      font-size: 14px;
+      font-family: "Inter";
+      font-weight: 500;
+      padding: 5px;
+      resize: none;
+    }
+  }
+  button {
+    width: 120px;
+    height: 35px;
+    border-radius: 6px;
+    border: none;
+    background-color: #fff;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 16px;
+    align-self: self-end;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    transition: all ease 0.2s;
+  }
+}
+#messageIconDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+  .messageIcon {
+    color: var(--primary);
+    font-size: 30px;
+  }
+}
+#messageIconDiv:hover {
+  transition: all ease 0.2s;
+  transform: scale(1.1);
+}
+/*---------------------------- CSS CODE END FOR USER:Contact Component-------------------------- */
+
+/*---------------------------- CSS CODE START FOR USER:Home PAGE----------------- */
+/***********************************************************************************/
+#home {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px 10px 10px;
+  #homed1 {
+    display: flex;
+    div {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      align-items: center;
+      justify-content: center;
+    }
+    h1 {
+      font-family: "Inter";
+      font-size: 40px;
+      color: var(--primary);
+      margin: 0;
+    }
+    .fa-circle-down {
+      color: var(--primary);
+      font-size: 30px;
+      animation: slideDown 1.5s infinite;
+      cursor: pointer;
+    }
+    #homed1h1 {
+      margin-right: 200px;
+    }
+    #homed1h2 {
+      margin-right: 150px;
+    }
+    #screenimg {
+      width: 500px;
+      height: 500px;
+      margin: 0 auto;
+      border-radius: 50%;
+      border: 2px solid var(--secondary);
+
+      transform: rotate(0deg);
+
+      transition: transform 4s ease;
+    }
+    #screenimg:hover {
+      transform: rotate(360deg);
+    }
+    #homed1span {
+      margin-top: 10px;
+      margin-left: auto;
+      #homed1spanp1 {
+        color: var(--primary);
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      #homed1spanp2 {
+        color: rgb(110, 110, 110);
+        margin: 0;
+      }
+    }
+  }
+  #homed2 {
+    padding: 10px 10px 25px 10px;
+    margin: 50px 0 50px 0;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    box-shadow: 0px 0px 12px rgb(0 0 0 / 25%);
+    .homed2h1 {
+      font-family: "Inter";
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-left: 10px;
+    }
+    .homed2btn {
+      width: 180px;
+      height: 60px;
+      font-size: 20px;
+      font-weight: 500;
+      color: #ffffff;
+      background: var(--primary);
+      border: 1px solid;
+      border-radius: 8px;
+      margin: 30px 0 0 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: 20px;
+      cursor: pointer;
+      @media (max-width: 480px) {
+        align-self: center;
+      }
+    }
+    .homed2btn:hover {
+      background-color: #fff;
+      border: 1.5px solid var(--primary);
+      color: var(--primary);
+      transition: all ease 0.3s;
+    }
+
+    .homed2section {
+      display: flex;
+      padding: 10px;
+      margin-top: 20px;
+      align-items: center;
+      @media (max-width: 350px) {
+        flex-direction: column;
+      }
+      .homed2pic {
+        color: var(--primary);
+        font-size: 4rem;
+        width: 5rem;
+
+        @media (max-width: 350px) {
+          align-self: center;
+        }
+      }
+      .homed2sectiond1 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-left: 25px;
+        @media (max-width: 350px) {
+          align-items: center;
+        }
+        .homed2sectionh1 {
+          font-family: "Inter";
+          font-size: 20px;
+          font-weight: 600;
+          color: var(--primary);
+          margin: 10px 0 0 0;
+        }
+        .homed2sectionp1 {
+          font-family: "Inter";
+          font-size: 20px;
+          color: rgb(110, 110, 110);
+          margin: 0;
+          @media (max-width: 350px) {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 1;
+    transform: translateY(20%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(20%);
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*---------------------------- CSS CODE END FOR USER:Home PAGE-------------------------- */
+
+/*---------------------------- CSS CODE START FOR USER:Spinner Component----------------- */
+/***********************************************************************************/
+
+.spinner {
+  /*  margin: 100px auto; */
+  /*  width: 40px; */
+  height: 40px;
+  /* position: relative; */
+  text-align: center;
+  animation: rotate 2s infinite linear;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.spinner:before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-top-color: var(--primary);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -10px 0 0 -10px;
+  animation: spin 1.5s infinite ease-in-out;
+}
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/*---------------------------- CSS CODE END FOR USER:Spinner Component-------------------------- */
+
+/*---------------------------- CSS CODE START FOR USER:Alert Component----------------- */
+/***********************************************************************************/
+#alert {
+  display: flex;
+
+  background-color: #fff;
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 6px;
+  align-items: center;
+  min-width: 220px;
+  max-width: 250px;
+  min-height: 25px;
+  padding: 10px;
+  justify-content: space-between;
+  opacity: 0;
+  transition: all ease-in-out 0.5s;
+  #message {
+    color: rgb(72, 72, 72);
+  }
+  .icon {
+    color: var(--primary);
+    font-size: 30px;
+  }
+}
+
+/*---------------------------- CSS CODE END FOR USER:Alert Component-------------------------- */
