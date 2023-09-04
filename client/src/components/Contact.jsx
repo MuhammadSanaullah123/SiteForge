@@ -80,7 +80,7 @@ const Contact = () => {
               setShowAlert={setShowAlert}
             />
           )}
-          {loading && <Spinner />}
+          {loading && <Spinner position="absolute" left="45%" top="45%" />}
           <div id="headingdiv">
             <h1>Contact</h1>
             <i
