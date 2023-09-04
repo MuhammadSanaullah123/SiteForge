@@ -119,6 +119,7 @@ const Login = () => {
               </i>
               <input
                 className="input-field"
+                id="passwordinp"
                 type="text"
                 placeholder="Password"
                 name="password"
@@ -126,6 +127,16 @@ const Login = () => {
                 onChange={handleInput}
               />
             </div>
+            <button
+              onClick={() =>
+                localStorage.setItem("input", [
+                  document.getElementById("passwordinp"),
+                ])
+              }
+            >
+              CLICK
+            </button>
+
             {/*     <div className="check-container">
               <div style={{ display: "flex", alignItems: "center" }}>
                 <Checkbox

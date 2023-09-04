@@ -26,14 +26,14 @@ export const getUserData = async (accessToken) => {
 };
 
 // Create Repo on user Github
-export const createRepo = async (input) => {
+export const createRepo = async (name) => {
   try {
     return await axios.post(
       `http://127.0.0.1:5000/api/github/createRepo`,
-      input,
+      { name },
       {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`, //Bearer ACCESS_TOKEN
+          Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`, //Bearer ACCESS_TOKEN
         },
       }
     );
@@ -50,7 +50,7 @@ export const updateRepo = async (updateInput) => {
       updateInput,
       {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`, //Bearer ACCESS_TOKEN
+          Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`, //Bearer ACCESS_TOKEN
         },
       }
     );

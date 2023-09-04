@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+//css
+import "./1.scss";
+
 //assets
-import guser from "../assets/guser.svg";
-import passwordpic from "../assets/password.svg";
+import guser from "../../assets/guser.svg";
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -25,14 +27,14 @@ const Login = () => {
         <div className="bigDiv">
           <div className="circleDiv">
             <div className="circleDiv2">
-              <img className="circleDiv2pic" src={guser} alt="" />
+              <i className="fa-solid fa-user circleDiv2pic" alt="user icon"></i>
             </div>
           </div>
           <div className="smallDiv">
             <div className="input-container">
-              {/*   <i className="inputimgback">
-                <EmailIcon className="inputimg" />
-              </i> */}
+              <i className="inputimgback">
+                <i className="fa-solid fa-envelope inputimg"></i>
+              </i>
               <input
                 className="input-field"
                 type="text"
@@ -44,7 +46,7 @@ const Login = () => {
             </div>
             <div className="input-container">
               <i className="inputimgback">
-                <img className="inputimg" src={passwordpic} alt="" />
+                <i className="fa-solid fa-key inputimg"></i>
               </i>
               <input
                 className="input-field"
@@ -74,7 +76,7 @@ const Login = () => {
         </div>
         <div style={{ marginTop: "35px" }}>
           <Link className="l1">
-            <button style={{ backgroundColor: bcolor }} className="btn1">
+            <button /* style={{ backgroundColor: bcolor }} */ className="btn1">
               Login
             </button>
           </Link>

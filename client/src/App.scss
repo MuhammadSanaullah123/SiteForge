@@ -62,7 +62,7 @@
         justify-content: center;
         width: 108px;
         height: 108px;
-        border: 2px solid var(--primary);
+        border: 1px solid var(--primary);
         border-radius: 50%;
         z-index: 999;
         @media only screen and (max-width: 1400px) and (min-width: 1000px) {
@@ -74,9 +74,10 @@
           height: 90px;
         }
         .circleDiv2pic {
-          filter: invert(46%) sepia(68%) saturate(2830%) hue-rotate(332deg)
-            brightness(91%) contrast(102%);
-
+          /*   filter: invert(46%) sepia(68%) saturate(2830%) hue-rotate(332deg)
+            brightness(91%) contrast(102%); */
+          color: var(--primary);
+          font-size: 50px;
           @media (max-width: 540px) {
             width: 60px;
             height: 60px;
@@ -138,8 +139,7 @@
           }
         }
         .inputimg {
-          width: 38px;
-          height: 38px;
+          font-size: 26px;
           color: #ffffff;
         }
         .input-field {
@@ -221,13 +221,19 @@
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
-    box-shadow: 0px 0px 7px;
-    border-radius: 4px;
+
+    border-radius: 6px;
     border: 0;
     cursor: pointer;
     @media only screen and (max-width: 1400px) and (min-width: 1000px) {
       width: 170px !important;
     }
+  }
+  .btn1:hover {
+    color: var(--primary);
+    background-color: #fff;
+    border: 1px solid var(--primary);
+    transition: all ease 0.3s;
   }
   .mainDivp1 {
     font-family: "Inter";
@@ -373,6 +379,51 @@
     100% {
       opacity: 1;
       transform: translateX(0);
+    }
+  }
+
+  .dpdiv {
+    display: flex;
+    flex-direction: row-reverse;
+
+    height: 45px;
+
+    img {
+      height: inherit;
+      border-radius: 50%;
+      border: 1px solid #fff;
+    }
+  }
+  .logoutdiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 80px;
+    height: 40px;
+    border-radius: 6px;
+    margin-right: 10px;
+    a {
+      font-family: "Inter";
+      text-decoration: none;
+      color: var(--primary);
+      position: relative;
+      text-decoration: none;
+    }
+    a::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    a:hover::before {
+      width: 100%;
+      left: 0;
     }
   }
 }
@@ -776,35 +827,214 @@
 }
 /*---------------------------- CSS CODE END FOR USER:Home PAGE-------------------------- */
 
+/*---------------------------- CSS CODE START FOR USER:Templates PAGE----------------- */
+/***********************************************************************************/
+#templates {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  h1 {
+    color: var(--primary);
+    font-size: 22px;
+    margin-top: 20px;
+  }
+  #templatesd1 {
+    display: flex;
+    height: 200px;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+    background-color: var(--primary);
+    opacity: 0.6;
+    p {
+      font-size: 20px;
+    }
+    .fa-ellipsis {
+      font-size: 30px;
+      margin-left: 10px;
+    }
+    .fa-ghost {
+      font-size: 100px;
+      align-self: center;
+      animation: ghostmode 15s infinite;
+    }
+  }
+  .finishbtn {
+    width: 250px;
+    height: 50px;
+    background-color: var(--primary);
+    border: 0;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 20px;
+    margin-top: 20px;
+    align-self: center;
+
+    cursor: pointer;
+  }
+  .finishbtn:hover {
+    background-color: #fff;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    transition: all ease-in-out 0.2s;
+  }
+  #modal {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 400px;
+
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px 0px #000;
+    position: fixed;
+    top: 30%;
+    left: 35%;
+    .startimg {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .fa-github {
+      color: #000;
+      font-size: 26px;
+    }
+    .fa-xmark {
+      color: var(--primary);
+      font-size: 26px;
+
+      cursor: pointer;
+    }
+    .fa-xmark:hover {
+      transform: scale(1.1);
+      transition: all ease-in-out 0.2s;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      .radiolabel {
+        color: rgb(110, 110, 110);
+        cursor: pointer;
+      }
+      input[type="text"] {
+        height: 35px;
+        border-radius: 6px;
+        border: 1px solid rgba(0, 0, 0, 0.644);
+        padding: 0 5px 0 5px;
+        margin-top: 15px;
+      }
+      input[type="radio"] {
+        cursor: pointer;
+      }
+      button {
+        width: 150px;
+        height: 35px;
+        font-size: 16px;
+        border: 0;
+        background-color: var(--primary);
+        color: #fff;
+        border-radius: 6px;
+        margin: 15px 0 10px 0;
+        align-self: flex-end;
+        cursor: pointer;
+      }
+      button:hover {
+        border: 1px solid var(--primary);
+        background-color: #fff;
+        color: var(--primary);
+        transition: all ease-in-out 0.2s;
+      }
+    }
+  }
+  #loadingModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 400px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px 0px #000;
+    position: fixed;
+    top: 30%;
+    left: 35%;
+  }
+  .loadingModalh1 {
+    font-size: 20px;
+    margin: 0;
+  }
+}
+@keyframes ghostmode {
+  0% {
+    transform: translateX(0) scaleX(-1);
+  }
+  10% {
+    transform: translateX(0) scaleX(1);
+  }
+
+  75% {
+    transform: translateX(600px);
+  }
+  80% {
+    transform: translateX(600px) scaleX(-1);
+  }
+  100% {
+    transform: translateX(0) scaleX(-1);
+  }
+}
+/*---------------------------- CSS CODE END FOR USER:Templates PAGE-------------------------- */
+
+/*---------------------------- CSS CODE START FOR USER:TemplatesList Component----------------- */
+/***********************************************************************************/
+#templateList {
+  display: flex;
+  background-color: var(--primary);
+  height: 250px;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 5px;
+  #templatelistd1 {
+    background-color: #fff;
+    width: 450px;
+    display: flex;
+    margin-right: 20px;
+    border-radius: 6px;
+    img {
+      width: inherit;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    img:hover {
+      transform: scale(1.02);
+      transition: all ease 0.3s;
+    }
+  }
+}
+/*---------------------------- CSS CODE END FOR USER:TemplatesList Component-------------------------- */
+
 /*---------------------------- CSS CODE START FOR USER:Spinner Component----------------- */
 /***********************************************************************************/
 
 .spinner {
-  /*  margin: 100px auto; */
-  /*  width: 40px; */
-  height: 40px;
-  /* position: relative; */
-  text-align: center;
-  animation: rotate 2s infinite linear;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-}
-
-.spinner:before {
-  content: "";
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  border-top-color: var(--primary);
-  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
   top: 50%;
   left: 50%;
-  margin: -10px 0 0 -10px;
-  animation: spin 1.5s infinite ease-in-out;
+  z-index: 100000;
 }
-@keyframes rotate {
+.fa-gear {
+  animation: spin 2s infinite linear;
+  color: var(--primary);
+  font-size: 50px;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
   100% {
     transform: rotate(360deg);
   }
@@ -815,7 +1045,7 @@
 /***********************************************************************************/
 #alert {
   display: flex;
-
+  z-index: 1000;
   background-color: #fff;
   position: fixed;
   top: 30px;
@@ -825,7 +1055,7 @@
   align-items: center;
   min-width: 220px;
   max-width: 250px;
-  min-height: 25px;
+  min-height: 40px;
   padding: 10px;
   justify-content: space-between;
   opacity: 0;
@@ -840,3 +1070,44 @@
 }
 
 /*---------------------------- CSS CODE END FOR USER:Alert Component-------------------------- */
+
+/*---------------------------- CSS CODE START FOR USER:Next Component----------------- */
+/***********************************************************************************/
+.next {
+  display: flex;
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  font-size: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  animation: slideRight 1.5s infinite;
+  cursor: pointer;
+  .arrow {
+    color: var(--primary);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  25% {
+    opacity: 1;
+    transform: translateX(20%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(20%);
+  }
+  75% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/*---------------------------- CSS CODE END FOR USER:Next Component-------------------------- */

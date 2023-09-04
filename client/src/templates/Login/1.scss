@@ -1,0 +1,262 @@
+.line {
+  background: linear-gradient(
+    90deg,
+    rgba(155, 171, 191, 0) 1.04%,
+    #9babbf 51.56%,
+    rgba(155, 171, 191, 0) 100%
+  );
+  width: 95%;
+  height: 1.5px;
+  margin-bottom: 15px;
+}
+.mainloginDiv {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0;
+  background-image: url("https://res.cloudinary.com/dmtcur7kt/image/upload/v1685210269/login_background_rybwk9.jpg");
+  background-repeat: round;
+  .bigDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 528px;
+
+    @media only screen and (max-width: 1400px) and (min-width: 1000px) {
+      width: 428px;
+    }
+    @media (max-width: 540px) {
+      width: 85%;
+    }
+    @media (max-width: 480px) {
+      width: 95%;
+    }
+    .circleDiv {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      top: 60px;
+      padding: 30px;
+      margin: 0 auto;
+      border-radius: 50%;
+      box-shadow: 0px -20px 20px rgb(0 0 0 / 8%);
+      background-color: white;
+      z-index: 99;
+      .circleDiv2 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 108px;
+        height: 108px;
+        border: 1px solid var(--primary);
+        border-radius: 50%;
+        z-index: 999;
+        @media only screen and (max-width: 1400px) and (min-width: 1000px) {
+          width: 95px;
+          height: 95px;
+        }
+        @media (max-width: 540px) {
+          width: 90px;
+          height: 90px;
+        }
+        .circleDiv2pic {
+          /*   filter: invert(46%) sepia(68%) saturate(2830%) hue-rotate(332deg)
+              brightness(91%) contrast(102%); */
+          color: var(--primary);
+          font-size: 50px;
+          @media (max-width: 540px) {
+            width: 60px;
+            height: 60px;
+          }
+        }
+      }
+      @media (max-width: 540px) {
+        padding: 22px;
+      }
+      @media (max-width: 320px) {
+        padding: 20px;
+      }
+    }
+
+    .smallDiv {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 528px;
+      // height: 356px;
+      background: #ffffff;
+      box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.25);
+      z-index: 2;
+      border-radius: 6px;
+      justify-content: space-evenly;
+      padding-top: 50px;
+      @media only screen and (max-width: 1400px) and (min-width: 1000px) {
+        width: 428px;
+      }
+      @media (max-width: 540px) {
+        width: 100%;
+      }
+
+      .input-container {
+        display: flex;
+        width: 426px;
+        height: 58px;
+        background: #ebeaea;
+        border-radius: 5px;
+        margin: 10px 0;
+        @media only screen and (max-width: 1400px) and (min-width: 1000px) {
+          width: 350px;
+          height: 43px;
+        }
+        @media (max-width: 540px) {
+          width: 85%;
+        }
+        .inputimgback {
+          display: flex;
+          background-color: var(--primary);
+          align-items: center;
+          justify-content: center;
+          width: 54px;
+          height: 58px;
+          border-radius: 5px 0px 0px 5px;
+          @media only screen and (max-width: 1400px) and (min-width: 1000px) {
+            height: 43px;
+            width: 50px;
+          }
+        }
+        .inputimg {
+          font-size: 26px;
+          color: #ffffff;
+        }
+        .input-field {
+          width: 100%;
+          background: #ebeaea;
+          border: 0px;
+          font-size: 20px;
+          font-family: "Inter";
+          @media only screen and (max-width: 1400px) and (min-width: 1000px) {
+            font-size: 17px;
+          }
+          padding-left: 15px;
+        }
+        .input-field:focus {
+          outline: none;
+        }
+        ::placeholder {
+          font-family: "Inter";
+          font-weight: 400;
+          font-size: 20px;
+          color: #937a7a;
+          //   padding-left: 30px;
+          @media only screen and (max-width: 1400px) and (min-width: 1000px) {
+            font-size: 17px;
+          }
+        }
+      }
+      .check-container {
+        display: flex;
+        width: 426px;
+        justify-content: space-between;
+        padding-bottom: 10px;
+        align-items: center;
+        margin-top: 10px;
+
+        @media only screen and (max-width: 1400px) and (min-width: 1000px) {
+          width: 350px;
+        }
+        @media (max-width: 540px) {
+          width: 85%;
+        }
+        .form-check-input {
+          height: 14px;
+          width: 14px;
+        }
+        .checkp {
+          font-family: "Inter";
+          font-weight: 300;
+          font-size: 13px;
+          color: #464646;
+          margin-top: 0;
+          margin-left: 8px;
+          margin-bottom: 0;
+        }
+        .checkp2 {
+          font-family: "Inter";
+          font-style: normal;
+          font-weight: 600;
+          font-size: 13px;
+          color: var(--primary);
+          text-decoration: none;
+        }
+        .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
+        .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+          color: var(--primary);
+        }
+      }
+    }
+  }
+  .l1 {
+    text-decoration: none;
+  }
+  .btn1 {
+    width: 198px;
+    height: 59px;
+    background: var(--primary);
+    color: #ffffff;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+
+    border-radius: 6px;
+    border: 0;
+    cursor: pointer;
+    @media only screen and (max-width: 1400px) and (min-width: 1000px) {
+      width: 170px !important;
+    }
+  }
+  .btn1:hover {
+    color: var(--primary);
+    background-color: #fff;
+    border: 1px solid var(--primary);
+    transition: all ease 0.3s;
+  }
+  .mainDivp1 {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    color: #473d3d;
+  }
+  .mainimgDiv {
+    display: flex;
+    width: 150px;
+    margin-bottom: 50px;
+    justify-content: space-around;
+    .imgDiv {
+      width: 62px;
+      height: 50px;
+      background: #c54238;
+      border-radius: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      @media only screen and (max-width: 1400px) and (min-width: 1000px) {
+        width: 52px !important;
+        height: 40px !important;
+      }
+      .endimg {
+        width: 32px;
+        height: 32px;
+        @media only screen and (max-width: 1400px) and (min-width: 1000px) {
+          width: 25px !important;
+          height: 25px !important;
+        }
+      }
+    }
+  }
+}
