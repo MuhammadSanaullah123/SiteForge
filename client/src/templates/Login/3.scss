@@ -1,0 +1,99 @@
+#login {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0;
+  background-color: #f3e4e4;
+  #parentDiv {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 400px;
+    border-radius: 6px;
+    background-color: #fff;
+    padding: 30px 20px 30px 20px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 5px 1px rgb(0, 0, 0, 0.1);
+    @media (max-width: 370px) {
+      width: 80%;
+      margin: 10px;
+    }
+    .fa-react {
+      color: var(--primary-color);
+      font-size: 50px;
+    }
+    p {
+      color: #494949;
+      font-weight: 500;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 90%;
+      input {
+        height: 35px;
+        border-radius: 6px;
+        border: 1px solid #49494983;
+        padding-left: 5px;
+      }
+      input:hover {
+        border-color: #494949;
+      }
+      label {
+        color: #494949;
+        font-weight: 500;
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+    }
+    button {
+      height: 40px;
+      border-radius: 6px;
+      border: 0;
+      background-color: var(--primary-color);
+      color: #fff;
+      font-weight: 500;
+      font-size: 15px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+    #loginbtn:hover {
+      background-color: #fff;
+      color: var(--primary-color);
+      border: 1px solid var(--primary-color);
+      transition: all ease-in-out 0.3s;
+    }
+    #googlebtn {
+      background-color: transparent;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      .fa-google {
+        margin-right: 10px;
+      }
+    }
+    #googlebtn:hover {
+      background-color: var(--primary-color);
+      border: 0;
+      color: #fff;
+      transition: all ease-in-out 0.3s;
+      .fa-google {
+        margin-right: 10px;
+        color: #fff;
+      }
+    }
+    span {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      a {
+        text-decoration: none;
+        margin-top: 5px;
+      }
+    }
+  }
+}

@@ -1,8 +1,9 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  --primary-color: #2683ff;
+  --secondary: #046380;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
 }
 
 .logo {

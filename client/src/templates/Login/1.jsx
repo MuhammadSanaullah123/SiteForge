@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 //css
 import "./1.scss";
 
-//assets
-import guser from "../../assets/guser.svg";
-
 const Login = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
-
+  const [remember, setRemember] = useState(false);
+  const handleRemember = (event) => {
+    setRemember(event.target.checked);
+  };
   const handleInput = (e) => {
     const Value = e.target.value;
     setValues({
@@ -42,6 +42,7 @@ const Login = () => {
                 name="email"
                 value={values.email}
                 onChange={handleInput}
+                required
               />
             </div>
             <div className="input-container">
@@ -55,11 +56,14 @@ const Login = () => {
                 name="password"
                 value={values.password}
                 onChange={handleInput}
+                required
               />
             </div>
-            {/*     <div className="check-container">
+
+            <div className="check-container">
               <div style={{ display: "flex", alignItems: "center" }}>
-                <Checkbox
+                <input
+                  type="checkbox"
                   className="form-check-input"
                   checked={remember}
                   onChange={handleRemember}
@@ -71,14 +75,12 @@ const Login = () => {
               <Link to="/signup" className="checkp2">
                 Create Account
               </Link>
-            </div> */}
+            </div>
           </div>
         </div>
         <div style={{ marginTop: "35px" }}>
           <Link className="l1">
-            <button /* style={{ backgroundColor: bcolor }} */ className="btn1">
-              Login
-            </button>
+            <button className="btn1">Login</button>
           </Link>
         </div>
       </div>

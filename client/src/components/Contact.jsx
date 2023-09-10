@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import { useContact } from "./ContactContext";
 //component
 import Spinner from "./Spinner";
 import Alert from "./Alert";
@@ -10,7 +10,9 @@ const serviceID = "service_3uq80fa";
 const templateID = "template_ymvt7vf";
 const PUBLIC_KEY = "fUmI0_TecHG3U-nDf";
 const Contact = () => {
-  const [open, setOpen] = useState(false);
+  let { isContactOpen } = useContact();
+
+  const [open, setOpen] = useState(isContactOpen);
   const [loading, setLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -62,6 +64,11 @@ const Contact = () => {
         }
       );
   };
+  useEffect(() => {
+    if (isContactOpen) {
+      setOpen(isContactOpen);
+    }
+  }, [isContactOpen]);
 
   return (
     <>
@@ -95,6 +102,7 @@ const Contact = () => {
               name="name"
               placeholder="Name"
               onChange={handleInput}
+              required
             />
             <input
               value={data.email}
@@ -102,6 +110,7 @@ const Contact = () => {
               name="email"
               placeholder="Email"
               onChange={handleInput}
+              required
             />
             <textarea
               value={data.message}
@@ -110,6 +119,7 @@ const Contact = () => {
               name="message"
               placeholder="Message..."
               onChange={handleInput}
+              required
             />
             <button onClick={handleSubmit}>Send</button>
           </div>

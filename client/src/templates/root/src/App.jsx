@@ -7,15 +7,21 @@ import {
 import "./App.css";
 
 /*importLogin*/
+/*importSignup*/
+/*importHeader*/
+/*importFooter*/
 
 const App = () => {
   return (
     <>
       <Router>
+        {/*RouteHeader*/}
         <Routes>
+          {/*RouteDefault*/}
           {/*RouteLogin*/}
-          {/*   <Route exact path="/login" element={<Login />} /> */}
+          {/*RouteSignup*/}
         </Routes>
+        {/*RouteFooter*/}
       </Router>
     </>
   );

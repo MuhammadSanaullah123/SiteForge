@@ -1,35 +1,22 @@
-.line {
-  background: linear-gradient(
-    90deg,
-    rgba(155, 171, 191, 0) 1.04%,
-    #9babbf 51.56%,
-    rgba(155, 171, 191, 0) 100%
-  );
-  width: 95%;
-  height: 1.5px;
-  margin-bottom: 15px;
-}
-.mainloginDiv {
+.mainsignupDiv {
   display: flex;
   height: 100vh;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 0;
 
-  .bigDiv {
+  .bigDivS {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 528px;
+    height: 600px;
 
     @media only screen and (max-width: 1400px) and (min-width: 1000px) {
       width: 428px;
+      height: 550px;
     }
     @media (max-width: 540px) {
-      width: 85%;
-    }
-    @media (max-width: 480px) {
       width: 95%;
     }
     .circleDiv {
@@ -44,6 +31,9 @@
       box-shadow: 0px -20px 20px rgb(0 0 0 / 8%);
       background-color: white;
       z-index: 99;
+      @media (max-width: 400px) {
+        padding: 25px;
+      }
       .circleDiv2 {
         display: flex;
         align-items: center;
@@ -61,6 +51,10 @@
           width: 90px;
           height: 90px;
         }
+        @media (max-width: 400px) {
+          width: 80px;
+          height: 80px;
+        }
         .circleDiv2pic {
           color: var(--primary-color);
           font-size: 50px;
@@ -69,31 +63,32 @@
           }
         }
       }
-      @media (max-width: 540px) {
-        padding: 22px;
-      }
-      @media (max-width: 320px) {
-        padding: 20px;
-      }
     }
 
-    .smallDiv {
+    .smallDivS {
+      padding-top: 60px;
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 528px;
-      // height: 356px;
+      height: 370px;
       background: #ffffff;
       box-shadow: 0px 0px 18px rgba(0, 0, 0, 0.25);
       z-index: 2;
       border-radius: 6px;
       justify-content: space-evenly;
-      padding-top: 50px;
       @media only screen and (max-width: 1400px) and (min-width: 1000px) {
         width: 428px;
+        height: 320px;
+
+        justify-content: space-between;
+      }
+      @media (max-width: 1000px) {
+        padding-top: 50px;
       }
       @media (max-width: 540px) {
         width: 100%;
+        padding-top: 45px;
       }
 
       .input-container {
@@ -102,13 +97,16 @@
         height: 58px;
         background: #ebeaea;
         border-radius: 5px;
-        margin: 10px 0;
         @media only screen and (max-width: 1400px) and (min-width: 1000px) {
           width: 350px;
           height: 43px;
         }
         @media (max-width: 540px) {
-          width: 85%;
+          width: 90%;
+        }
+        @media (max-width: 500px) {
+          width: 90%;
+          height: 43px;
         }
         .inputimgback {
           display: flex;
@@ -122,6 +120,9 @@
             height: 43px;
             width: 50px;
           }
+          @media (max-width: 500px) {
+            height: 43px;
+          }
         }
         .inputimg {
           font-size: 26px;
@@ -131,12 +132,9 @@
           width: 100%;
           background: #ebeaea;
           border: 0px;
-          font-size: 20px;
-          font-family: "Inter";
-          @media only screen and (max-width: 1400px) and (min-width: 1000px) {
-            font-size: 17px;
-          }
+          font-size: 16px;
           padding-left: 15px;
+          font-family: "Inter";
         }
         .input-field:focus {
           outline: none;
@@ -144,41 +142,38 @@
         ::placeholder {
           font-family: "Inter";
           font-weight: 400;
-          font-size: 20px;
+          font-size: 16px;
           color: #937a7a;
-          //   padding-left: 30px;
-          @media only screen and (max-width: 1400px) and (min-width: 1000px) {
-            font-size: 17px;
-          }
+          //  padding-left: 30px;
         }
       }
       .check-container {
         display: flex;
         width: 426px;
-        justify-content: space-between;
-        padding-bottom: 10px;
         align-items: center;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        justify-content: space-between;
+
         @media only screen and (max-width: 1400px) and (min-width: 1000px) {
           width: 350px;
+          height: 43px;
         }
         @media (max-width: 540px) {
-          width: 85%;
+          width: 90%;
         }
+
         .form-check-input {
           height: 14px;
           width: 14px;
           cursor: pointer;
         }
-        .checkp {
+        .checkpS {
           font-family: "Inter";
           font-weight: 300;
           font-size: 13px;
           color: #464646;
           margin-top: 0;
           margin-left: 8px;
-          margin-bottom: 0;
+          display: flex;
         }
         .checkp2 {
           font-family: "Inter";
@@ -187,17 +182,24 @@
           font-size: 13px;
           color: var(--primary-color);
           text-decoration: none;
-          cursor: pointer;
+          margin-left: 5px;
         }
         .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
         .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
           color: var(--primary-color);
         }
       }
+      .smallDivp {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 16px;
+        color: rgb(255, 0, 0);
+
+        margin: 0 0 10px 0;
+      }
     }
-  }
-  .l1 {
-    text-decoration: none;
   }
   .btn1 {
     width: 198px;
@@ -232,7 +234,6 @@
   .mainimgDiv {
     display: flex;
     width: 150px;
-    margin-bottom: 50px;
     justify-content: space-around;
     .imgDiv {
       width: 62px;
@@ -243,17 +244,9 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      @media only screen and (max-width: 1400px) and (min-width: 1000px) {
-        width: 52px !important;
-        height: 40px !important;
-      }
       .endimg {
         width: 32px;
         height: 32px;
-        @media only screen and (max-width: 1400px) and (min-width: 1000px) {
-          width: 25px !important;
-          height: 25px !important;
-        }
       }
     }
   }

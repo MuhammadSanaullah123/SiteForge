@@ -31,7 +31,7 @@ const Alert = ({ message, type, time, setShowAlert }) => {
         ></i>
       ) : (
         <i
-          class="fa-solid fa-circle-exclamation icon "
+          className="fa-solid fa-circle-exclamation icon "
           style={{
             color: "rgb(250, 2, 2,0.9)",
           }}

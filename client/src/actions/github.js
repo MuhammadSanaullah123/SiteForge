@@ -1,6 +1,5 @@
 import axios from "axios";
-import { GET_ACCESS_TOKEN, GET_USER_DATA } from "./types";
-
+axios.defaults.withCredentials = true;
 // Get Access Token of user
 export const getAccessToken = async (codeParams) => {
   try {
@@ -12,14 +11,10 @@ export const getAccessToken = async (codeParams) => {
   }
 };
 
-// Get Access Token of user
+// Get data of user
 export const getUserData = async (accessToken) => {
   try {
-    return await axios.get(`http://127.0.0.1:5000/api/github/getUserData`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`, //Bearer ACCESS_TOKEN
-      },
-    });
+    return await axios.get(`http://127.0.0.1:5000/api/github/getUserData`);
   } catch (error) {
     console.error(error);
   }
@@ -31,11 +26,7 @@ export const createRepo = async (name) => {
     return await axios.post(
       `http://127.0.0.1:5000/api/github/createRepo`,
       { name },
-      {
-        headers: {
-          Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`, //Bearer ACCESS_TOKEN
-        },
-      }
+      {}
     );
   } catch (error) {
     console.error(error);
@@ -48,11 +39,7 @@ export const updateRepo = async (updateInput) => {
     return await axios.put(
       `http://127.0.0.1:5000/api/github/updateRepo`,
       updateInput,
-      {
-        headers: {
-          Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`, //Bearer ACCESS_TOKEN
-        },
-      }
+      {}
     );
   } catch (error) {
     console.error(error);

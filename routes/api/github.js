@@ -2,19 +2,14 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
-const archiver = require("archiver");
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
-
-const { serialize } = require("cookie");
-const CLIENT_ID = "527ea110abf67e712d0b";
-const CLIENT_SECRET = "000b291ec0c9deb78e6e1aa2bdbbfc1718409a34";
 
 // @route      POST api/github
 // @desciption Authenticating and Getting access token
 // @access     Public
 router.get("/getAccessToken", async (req, res) => {
-  const params = `?client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&code=${req.query.code}&redirect_uri=http://127.0.0.1:5173/templates`;
+  const params = `?client_id=${process.env.VITE_GITHUB_CLIENT_ID}&client_secret=${process.env.VITE_GITHUB_CLIENT_SECRET}&code=${req.query.code}&redirect_uri=http://127.0.0.1:5173/templates`;
   await fetch(`https://github.com/login/oauth/access_token${params}`, {
     method: "POST",
     headers: {
@@ -25,7 +20,14 @@ router.get("/getAccessToken", async (req, res) => {
       return response.json();
     })
     .then((data) => {
-      res.json(data);
+      res.cookie("g_token", data.access_token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict",
+        expires: new Date(Date.now() + 1800 * 1000),
+        path: "/",
+      });
+      res.json("Login Successfull");
     })
     .catch((error) => {
       console.error(error);
@@ -37,12 +39,14 @@ router.get("/getAccessToken", async (req, res) => {
 // @access     Private
 //access token is going to be passed in as an Authorization header
 router.get("/getUserData", async (req, res) => {
-  req.get("Authorization"); //Bearer ACCESSTOKEN
+  const { cookies } = req;
+
+  const g_token = cookies.g_token;
 
   await fetch("https://api.github.com/user", {
     method: "GET",
     headers: {
-      Authorization: req.get("Authorization"), //Bearer ACCESSTOKEN
+      Authorization: `Bearer ${g_token}`, //Bearer ACCESSTOKEN
     },
   })
     .then((response) => {
@@ -61,7 +65,9 @@ router.get("/getUserData", async (req, res) => {
 // @access     Private
 
 router.post("/createRepo", async (req, res) => {
-  const token = req.get("Authorization");
+  const { cookies } = req;
+
+  const g_token = cookies.g_token;
 
   const { name } = req.body;
 
@@ -69,7 +75,7 @@ router.post("/createRepo", async (req, res) => {
     const response = await fetch(`https://api.github.com/user/repos`, {
       method: "POST",
       headers: {
-        Authorization: token,
+        Authorization: `Bearer ${g_token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -80,9 +86,10 @@ router.post("/createRepo", async (req, res) => {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to create the repository on GitHub.");
+      throw new Error("Failed to create the repository on Github.");
     }
     const data = await response.json();
+
     res.json(data);
   } catch (error) {
     console.log(error);
@@ -96,7 +103,7 @@ router.post("/createRepo", async (req, res) => {
 const fetchWithRetry = async (
   url,
   options,
-  maxRetries = 3,
+  maxRetries = 10,
   retryDelay = 1000
 ) => {
   let retries = 0;
@@ -119,9 +126,11 @@ const fetchWithRetry = async (
 };
 
 router.put("/updateRepo", async (req, res) => {
-  const token = req.get("Authorization");
+  const { cookies } = req;
 
-  const { username, repoName, userPages, customizedCode } = req.body;
+  const g_token = cookies.g_token;
+
+  const { username, repoName, userPages, customCode } = req.body;
 
   try {
     const folderPath = path.join(__dirname, "../../client/src/templates/root");
@@ -134,27 +143,68 @@ router.put("/updateRepo", async (req, res) => {
 
         if (item.isFile()) {
           let fileContent = fs.readFileSync(filePath, "utf-8");
+
+          /* For customizing App.jsx of user pages */
           if (file === "App.jsx") {
+            let login = false;
+            let signup = false;
+
             for (const page of userPages) {
+              login = page.type === "Login" && true;
+              signup = page.type === "Signup" && true;
+
               fileContent = fileContent.replace(
                 new RegExp(`\\/\\*import${page.type}\\*\\/`, "g"),
-                `import ${page.type} from "./userPages/${page.type}";`
+                `import ${page.type} from "./userPages/${page.type}/${page.type}";`
               );
-              fileContent = fileContent.replace(
-                new RegExp(`{\\/\\*RouteLogin\\*\\/}`, "g"),
-                `<Route exact path="/${page.type.toLowerCase()}" element={<${
-                  page.type
-                } />} /> ;`
-              );
-              console.log(fileContent);
+              if (page.type === "Footer" || page.type === "Header") {
+                fileContent = fileContent.replace(
+                  new RegExp(`{\\/\\*Route${page.type}\\*\\/}`, "g"),
+                  `<${page.type}/> `
+                );
+              } else {
+                fileContent = fileContent.replace(
+                  new RegExp(`{\\/\\*Route${page.type}\\*\\/}`, "g"),
+                  `<Route exact path="/${page.type.toLowerCase()}" element={<${
+                    page.type
+                  } />} /> ;`
+                );
+              }
             }
+            console.log("login");
+            console.log(login);
+            console.log("signup");
+            console.log(signup);
+
+            if (login === true) {
+              fileContent = fileContent.replace(
+                new RegExp(`{\\/\\*RouteDefault\\*\\/}`, "g"),
+                `<Route exact path="/"  element={<Navigate replace to="/login" />} />`
+              );
+            }
+            if (signup === true && login === false) {
+              fileContent = fileContent.replace(
+                new RegExp(`{\\/\\*RouteDefault\\*\\/}`, "g"),
+                `<Route exact path="/" element={<Navigate replace to="/signup" />} />`
+              );
+            }
+            console.log(fileContent);
+          }
+
+          /* For customizing App.scss of user pages */
+          if (file === "App.css") {
+            fileContent = fileContent.replace(
+              new RegExp(`(--primary-color:\\s*)(#[^;]+)`, "g"),
+              `$1${customCode.primaryColor}`
+            );
+            console.log(fileContent);
           }
           const apiEndpoint = `https://api.github.com/repos/${username}/${repoName}/contents/${targetPath}${file}`;
 
           const response = await fetchWithRetry(apiEndpoint, {
             method: "PUT",
             headers: {
-              Authorization: token,
+              Authorization: `Bearer ${g_token}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -174,7 +224,7 @@ router.put("/updateRepo", async (req, res) => {
 
     await pushFolderContents(folderPath);
     for (const folder in userPages) {
-      /*   const customizedData = customizedCode[filePath];
+      /*   const customizedData = customCode[filePath];
       console.log(customizedData[0].bcolor); */
 
       const path_file = path.join(
@@ -205,7 +255,7 @@ router.put("/updateRepo", async (req, res) => {
           {
             method: "PUT",
             headers: {
-              Authorization: token,
+              Authorization: `Bearer ${g_token}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({

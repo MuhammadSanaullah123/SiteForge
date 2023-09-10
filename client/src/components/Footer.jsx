@@ -4,9 +4,29 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo-no-background.svg";
 import netlify from "../assets/netlify.svg";
 
-const Footer = () => {
+const FooterM = () => {
+  const scrollToTop = () => {
+    const smoothScrollToTop = () => {
+      if (window.scrollY > 0) {
+        const newPosition = window.scrollY - Math.min(window.scrollY, 40);
+        window.scrollTo(0, newPosition);
+
+        requestAnimationFrame(smoothScrollToTop);
+      }
+    };
+
+    smoothScrollToTop();
+  };
   return (
-    <div id="footer">
+    <div
+      style={{
+        marginTop: `${
+          (window.location.pathname.includes("templates/footer") && "100px") ||
+          (window.location.pathname.includes("templates/header") && "100px")
+        }`,
+      }}
+      id="footermine"
+    >
       <div id="footerd1">
         <img
           onClick={() => {
@@ -32,17 +52,27 @@ const Footer = () => {
         <Link>Terms of Service</Link>
       </div>
       <div id="footerd3">
-        <button id="gitbtn">
-          <i className="fa-brands fa-github githubimg"></i>
-          <p>GitHub</p>
-        </button>
-
-        <button id="netbtn">
-          <img className="homed2pic" src={netlify} alt="Logo of Netlify" />
-        </button>
+        <div>
+          <h1>Code Hosting Platform</h1>
+          <button
+            onClick={() => {
+              scrollToTop();
+            }}
+            id="gitbtn"
+          >
+            <i className="fa-brands fa-github githubimg"></i>
+            <p>GitHub</p>
+          </button>
+        </div>
+        <div>
+          <h1>Deployment Platform</h1>
+          <button id="netbtn">
+            <img className="homed2pic" src={netlify} alt="Logo of Netlify" />
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Footer;
+export default FooterM;

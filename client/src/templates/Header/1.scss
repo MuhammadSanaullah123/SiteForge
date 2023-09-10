@@ -1,0 +1,204 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  background-color: var(--primary-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.47);
+  box-shadow: 0px 1px 5px 0px #000;
+  padding: 20px 10px 10px 10px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  .fa-react {
+    font-size: 40px;
+    cursor: pointer;
+  }
+  .fa-react:hover {
+    transform: scale(1.02);
+    transition: transform ease 1s;
+  }
+  #linkdiv {
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    a {
+      font-family: "Inter";
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      text-decoration: none;
+    }
+    a::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #fff; /* Change this to your desired underline color */
+      transition: width 0.3s ease;
+    }
+
+    a:hover::before {
+      width: 100%;
+      left: 0;
+    }
+  }
+  .fa-bars {
+    font-size: 25px;
+    cursor: pointer;
+  }
+  #mobilelinkdiv {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: 4px;
+    height: 110px;
+    position: absolute;
+    top: 75px;
+    justify-content: space-between;
+    a {
+      font-family: "Inter";
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      text-decoration: none;
+    }
+    a::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #fff; /* Change this to your desired underline color */
+      transition: width 0.3s ease;
+    }
+
+    a:hover::before {
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    width: 155px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: transparent;
+    .githubimg {
+      font-size: 28px;
+    }
+    p {
+      font-family: "Inter";
+      margin: 0 5px 0 20px;
+    }
+  }
+  button:hover {
+    color: var(--primary-color);
+    background-color: #fff;
+    transition: all ease 0.3s;
+    img path {
+      fill: var(--primary-color);
+    }
+  }
+  .btnimg {
+    transition: opacity 0.5s ease;
+    animation: moveAndFade 1.5s infinite;
+    font-size: 20px;
+  }
+  .btn:hover > .btnimg {
+    color: #000;
+  }
+  @keyframes moveAndFade {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    25% {
+      opacity: 1;
+      transform: translateX(100%);
+    }
+    50% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    75% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .dpdiv {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+
+    cursor: pointer;
+
+    .dpSpan {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      .fa-user {
+        font-size: 30px;
+      }
+    }
+  }
+  .logoutdiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 80px;
+    height: 40px;
+    border-radius: 6px;
+    margin-right: 10px;
+    position: absolute;
+    top: 70px;
+    right: 5px;
+    a {
+      font-family: "Inter";
+      text-decoration: none;
+      color: var(--primary-color);
+      position: relative;
+      text-decoration: none;
+    }
+    a::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      transition: width 0.3s ease;
+    }
+
+    a:hover::before {
+      width: 100%;
+      left: 0;
+    }
+  }
+}

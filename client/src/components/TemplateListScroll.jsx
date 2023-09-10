@@ -1,6 +1,6 @@
 import React from "react";
 
-const TemplateList = ({ pages }) => {
+const TemplateListScroll = ({ pages }) => {
   const handleSelect = (event) => {
     const src = event.target.getAttribute("src");
     const type = event.target.getAttribute("name");
@@ -11,9 +11,15 @@ const TemplateList = ({ pages }) => {
     );
   };
   return (
-    <div id="templateList">
+    <div id="templateListScroll">
       {pages.map((page) => (
-        <div id="templatelistd1" key={page.id}>
+        <div
+          id="templatelistd1"
+          key={page.id}
+          style={{
+            height: `${page.type === "Footer" && "100%"}`,
+          }}
+        >
           <img
             src={page.src}
             name={page.type}
@@ -27,4 +33,4 @@ const TemplateList = ({ pages }) => {
   );
 };
 
-export default TemplateList;
+export default TemplateListScroll;

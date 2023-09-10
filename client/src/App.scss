@@ -1,7 +1,8 @@
-#root {
+:root {
   max-width: 1600px;
   margin: 0 auto;
   --primary: #2683ff; //primary color
+  --primary-color: #2683ff; // for template pages
   --secondary: #046380; // secondary color
   --danger-color: #dc3545;
   --success-color: #28a745;
@@ -27,8 +28,7 @@
   align-items: center;
   flex-direction: column;
   padding: 0;
-  background-image: url("https://res.cloudinary.com/dmtcur7kt/image/upload/v1685210269/login_background_rybwk9.jpg");
-  background-repeat: round;
+
   .bigDiv {
     display: flex;
     flex-direction: column;
@@ -79,8 +79,8 @@
           color: var(--primary);
           font-size: 50px;
           @media (max-width: 540px) {
-            width: 60px;
-            height: 60px;
+            /*      width: 60px;
+            height: 60px; */
           }
         }
       }
@@ -323,6 +323,46 @@
       left: 0;
     }
   }
+  .fa-bars {
+    font-size: 25px;
+    cursor: pointer;
+  }
+  #mobilelinkdiv {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    background-color: var(--primary);
+    padding: 10px;
+    border-radius: 4px;
+    height: 120px;
+    position: absolute;
+    right: 30px;
+    top: 75px;
+    justify-content: space-between;
+    a {
+      font-family: "Inter";
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      text-decoration: none;
+    }
+    a::before {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #fff; /* Change this to your desired underline color */
+      transition: width 0.3s ease;
+    }
+
+    a:hover::before {
+      width: 100%;
+      left: 0;
+    }
+  }
+
   button {
     display: flex;
     align-items: center;
@@ -432,7 +472,7 @@
 /*---------------------------- CSS CODE START FOR USER:Footer Component----------------- */
 /***********************************************************************************/
 
-#footer {
+#footermine {
   display: flex;
   background-color: var(--primary);
   height: 250px;
@@ -494,8 +534,11 @@
   #footerd3 {
     display: flex;
     flex-direction: column;
-    height: 120px;
+    height: 190px;
     justify-content: space-between;
+    h1 {
+      font-size: 18px;
+    }
     button {
       display: flex;
       align-items: center;
@@ -517,6 +560,7 @@
 
     #gitbtn {
       background-color: rgb(82, 82, 82);
+      margin-top: 5px;
     }
     #gitbtn:hover {
       color: rgb(82, 82, 82);
@@ -530,10 +574,51 @@
       padding: 25px;
       background-color: #fff;
       border: 1px solid #fff;
+      margin-top: 5px;
     }
     #netbtn:hover {
-      background-color: transparent;
+      background-color: rgb(255, 255, 255, 0.7);
       transition: all ease-in-out 0.3s;
+    }
+  }
+
+  @media (max-width: 850px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 30px;
+
+    height: auto;
+    row-gap: 40px;
+    #footerd1 {
+      width: auto;
+      grid-column: 1/3;
+    }
+    #footerd3 {
+      grid-column: 1/3;
+      display: flex;
+      flex-direction: row;
+      height: auto;
+    }
+  }
+  @media (max-width: 550px) {
+    #footerd1 {
+      width: auto;
+      grid-column: 1/4;
+    }
+    #footerd2 {
+      grid-column: 1/4;
+      align-items: center;
+    }
+    #footerd3 {
+      grid-column: 1/4;
+      display: flex;
+      flex-direction: row;
+      height: auto;
+    }
+  }
+  @media (max-width: 370px) {
+    #footerd3 {
+      flex-direction: column;
     }
   }
 }
@@ -692,10 +777,12 @@
       margin: 0 auto;
       border-radius: 50%;
       border: 2px solid var(--secondary);
-
       transform: rotate(0deg);
-
       transition: transform 4s ease;
+      @media (max-width: 1000px) {
+        width: 50%;
+        height: 50%;
+      }
     }
     #screenimg:hover {
       transform: rotate(360deg);
@@ -801,6 +888,13 @@
       }
     }
   }
+  @media (max-width: 768px) {
+    #homed1 {
+      h1 {
+        font-size: 30px;
+      }
+    }
+  }
 }
 
 @keyframes slideDown {
@@ -845,9 +939,11 @@
     padding: 10px;
     border-radius: 6px;
     margin-top: 10px;
-    background-color: var(--primary);
+
     opacity: 0.6;
     p {
+      color: var(--primary);
+      font-weight: 700;
       font-size: 20px;
     }
     .fa-ellipsis {
@@ -858,6 +954,7 @@
       font-size: 100px;
       align-self: center;
       animation: ghostmode 15s infinite;
+      color: var(--primary);
     }
   }
   .finishbtn {
@@ -956,14 +1053,117 @@
     height: 200px;
     background-color: #fff;
     border-radius: 4px;
-    box-shadow: 0px 0px 5px 0px #000;
+    box-shadow: 0px 0px 5px 0px rgb(0, 0, 0, 0.7);
+    padding-bottom: 30px;
     position: fixed;
     top: 30%;
     left: 35%;
+    #netbtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 155px;
+      height: 50px;
+      border-radius: 10px;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      margin-top: 10px;
+      cursor: pointer;
+      padding: 25px;
+      background-color: #fff;
+      border: 1px solid var(--primary);
+      box-shadow: 0px 0px 3px 1px var(--primary);
+    }
+    #netbtn:hover {
+      background-color: transparent;
+      box-shadow: 0px 0px 5px 3px var(--primary);
+
+      transition: all ease-in-out 0.3s;
+    }
+    .fa-circle-check {
+      font-size: 40px;
+      color: var(--success-color);
+    }
+    #netlifydiv {
+      display: flex;
+      flex-direction: column;
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .radiolabel {
+          color: rgb(110, 110, 110);
+          cursor: pointer;
+        }
+        input[type="text"] {
+          width: 180px;
+          height: 35px;
+          border-radius: 6px;
+          border: 1px solid rgba(0, 0, 0, 0.644);
+          padding: 0 5px 0 5px;
+        }
+        button {
+          width: 120px;
+          height: 35px;
+          font-size: 16px;
+          border: 0;
+          background-color: var(--primary);
+          color: #fff;
+          border-radius: 6px;
+          margin: 15px 0 10px 0;
+          cursor: pointer;
+        }
+        button:hover {
+          border: 1px solid var(--primary);
+          background-color: #fff;
+          color: var(--primary);
+          transition: all linear 0.2s;
+        }
+      }
+    }
+    .startimg {
+      display: flex;
+      justify-content: space-between;
+      align-self: center;
+      align-items: center;
+      width: 95%;
+      .fa-xmark {
+        color: var(--primary);
+        font-size: 26px;
+
+        margin-right: 20px;
+        cursor: pointer;
+      }
+      .fa-xmark:hover {
+        transform: scale(1.1);
+        transition: all ease-in-out 0.2s;
+      }
+      #netlifyimg {
+        height: 60px;
+      }
+    }
+    p {
+      color: #494949;
+      width: 90%;
+      margin-bottom: 20px;
+      a {
+        text-decoration: none;
+        line-break: anywhere;
+      }
+    }
+    #warningp {
+      color: rgba(255, 0, 0, 0.793);
+      width: auto;
+    }
   }
   .loadingModalh1 {
+    color: var(--primary);
     font-size: 20px;
     margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
   }
 }
 @keyframes ghostmode {
@@ -990,17 +1190,20 @@
 /***********************************************************************************/
 #templateList {
   display: flex;
-  background-color: var(--primary);
+  background: rgb(0, 0, 0, 0.1);
   height: 250px;
-  padding: 10px;
+  padding: 15px;
   border-radius: 6px;
   margin-top: 5px;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4);
+  overflow-x: auto;
   #templatelistd1 {
     background-color: #fff;
     width: 450px;
     display: flex;
     margin-right: 20px;
     border-radius: 6px;
+    box-shadow: 0px 0px 2px 1px var(--primary);
     img {
       width: inherit;
       border-radius: 6px;
@@ -1008,11 +1211,74 @@
     }
     img:hover {
       transform: scale(1.02);
+      box-shadow: 0px 0px 2px 1px var(--primary);
+
       transition: all ease 0.3s;
     }
   }
 }
+#templateListLong {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.1);
+  height: 250px;
+  padding: 15px;
+  border-radius: 6px;
+  margin: 20px 0 20px 0;
+  overflow-y: auto;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4);
+  #templatelistd1 {
+    background-color: #fff;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 2px 1px var(--primary);
+    cursor: pointer;
+    img {
+      width: 100%;
+    }
+  }
+  #templatelistd1:hover {
+    transform: scale(1.01);
+    box-shadow: 0px 0px 2px 1px var(--primary);
+    transition: all ease 0.3s;
+  }
+}
 /*---------------------------- CSS CODE END FOR USER:TemplatesList Component-------------------------- */
+
+/*---------------------------- CSS CODE START FOR USER:TemplatesListScroll Component----------------- */
+/***********************************************************************************/
+#templateListScroll {
+  display: flex;
+  flex-direction: column;
+  background: rgb(0, 0, 0, 0.1);
+  height: 250px;
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 5px;
+  overflow-y: auto;
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.4);
+  #templatelistd1 {
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    height: 150px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 2px 1px var(--primary);
+    margin-bottom: 50px;
+    img {
+      width: inherit;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    img:hover {
+      transform: scale(1.01);
+      box-shadow: 0px 0px 2px 1px var(--primary);
+
+      transition: all ease 0.3s;
+    }
+  }
+}
+/*---------------------------- CSS CODE END FOR USER:TemplatesListScroll Component-------------------------- */
 
 /*---------------------------- CSS CODE START FOR USER:Spinner Component----------------- */
 /***********************************************************************************/
@@ -1081,6 +1347,7 @@
   font-size: 40px;
   border-radius: 50%;
   background-color: #fff;
+  z-index: 1000;
   animation: slideRight 1.5s infinite;
   cursor: pointer;
   .arrow {
@@ -1111,3 +1378,55 @@
   }
 }
 /*---------------------------- CSS CODE END FOR USER:Next Component-------------------------- */
+
+/*---------------------------- CSS CODE START FOR USER:Customizer Component----------------- */
+/***********************************************************************************/
+#customizer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transition: transform 0.2s;
+  z-index: 10000;
+
+  .colorDiv {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    .sketchPickerClass {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      button {
+        width: 100%;
+        height: 30px;
+        border: 0;
+        border-radius: 0px 0px 4px 4px;
+        background-color: var(--primary);
+        color: #fff;
+        font-weight: 500;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+/*---------------------------- CSS CODE END FOR USER:Customizer Component-------------------------- */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+}

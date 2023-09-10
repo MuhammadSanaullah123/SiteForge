@@ -15,11 +15,12 @@ const Home = () => {
           <h1 id="homed1h3">Building</h1>
           <i
             className="fa-solid fa-circle-down"
-            onClick={() =>
+            onClick={() => {
               document.getElementById("homed2").scrollIntoView({
                 behavior: "smooth",
-              })
-            }
+              });
+              window.scrollBy(0, -120);
+            }}
           ></i>
           <span id="homed1span">
             <p id="homed1spanp1">No Coding!</p>
