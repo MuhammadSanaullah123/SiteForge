@@ -21,6 +21,7 @@ router.get("/getAccessToken", async (req, res) => {
       return response.json();
     })
     .then((data) => {
+      res.json(data.access_token);
       res.cookie("g_token", data.access_token, {
         httpOnly: true,
         secure: true,
@@ -28,7 +29,7 @@ router.get("/getAccessToken", async (req, res) => {
         expires: new Date(Date.now() + 1800 * 1000),
         path: "/",
       });
-      res.json(data.access_token);
+
       res.json("Login Successfull");
     })
     .catch((error) => {
