@@ -23,7 +23,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="mainloginDiv">
+      <div className="mainloginDiv1">
         <div className="bigDiv">
           <div className="circleDiv">
             <div className="circleDiv2">

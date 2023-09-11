@@ -13,7 +13,7 @@ const Footer = () => {
     setValues({ ...values, [e.target.name]: Value });
   };
   return (
-    <div id="footer">
+    <div id="footer3">
       <nav className="footerd1 footera">
         <a href="#home">Home</a>
         <a href="#about">About</a>

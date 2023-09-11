@@ -23,7 +23,7 @@ const Header = () => {
     setIsLogin(false);
   };
   return (
-    <header id="header">
+    <header id="header3">
       <i className="fa-brands fa-react"></i>
       <form className="inputDiv">
         <span className="imgSpan">

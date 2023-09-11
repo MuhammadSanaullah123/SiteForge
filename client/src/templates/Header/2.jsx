@@ -14,7 +14,7 @@ const Header = () => {
     setIsLogin(false);
   };
   return (
-    <header id="header">
+    <header id="header2">
       <i className="fa-brands fa-react"></i>
       <button
         onClick={isLogin ? handleLogout : handleLogin}

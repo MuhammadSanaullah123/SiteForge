@@ -19,7 +19,7 @@ const Navbar = () => {
   const [isMobile, setIsMobile] = useState();
 
   const [toggle, setToggle] = useState(false);
-  /*   const [userData, setUserData] = useState({}); */
+  const [userData, setUserData] = useState({});
   const [showOptions, setShowOptions] = useState(false);
 
   const handleLogin = () => {
@@ -34,7 +34,7 @@ const Navbar = () => {
     try {
       const response = await getUserData(sessionStorage.getItem("accessToken"));
 
-      /*    setUserData(response.data); */
+      setUserData(response.data);
       sessionStorage.setItem(
         "user",
         JSON.stringify({

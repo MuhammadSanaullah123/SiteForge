@@ -6,7 +6,7 @@ import "./1.scss";
 
 const Footer = () => {
   return (
-    <div id="footer">
+    <div id="footer1">
       <div id="footerd1">
         <i
           onClick={() => {

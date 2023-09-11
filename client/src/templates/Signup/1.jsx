@@ -27,7 +27,7 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="mainsignupDiv">
+      <div className="mainsignupDiv1">
         <div className="bigDivS">
           <div className="circleDiv">
             <div className="circleDiv2">

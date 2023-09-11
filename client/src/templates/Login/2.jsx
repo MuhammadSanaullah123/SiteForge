@@ -20,7 +20,7 @@ const Login = () => {
   };
   console.log(isLogin);
   return (
-    <div id="login">
+    <div id="login2">
       <div id="parentDiv">
         <form onSubmit={handleSubmit}>
           <p>Email</p>

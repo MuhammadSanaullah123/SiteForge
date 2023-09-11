@@ -32,7 +32,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="header">
+    <header className="header1">
       <i className="fa-brands fa-react"></i>
 
       {!isMobile ? (
@@ -79,7 +79,7 @@ const Header = () => {
       {isLogin ? (
         <div className="dpdiv" onClick={() => setShowOptions(!showOptions)}>
           <span className="dpSpan">
-            <i class="fa-solid fa-user"></i>
+            <i className="fa-solid fa-user"></i>
           </span>
           <div
             style={{

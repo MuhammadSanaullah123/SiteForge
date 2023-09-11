@@ -23,9 +23,9 @@ const Login = () => {
     setIsLogin(true);
   };
   return (
-    <div id="login">
+    <div id="signup3">
       <div id="parentDiv">
-        <i class="fa-brands fa-react"></i>
+        <i className="fa-brands fa-react"></i>
         <p>Login to your account</p>
         <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>

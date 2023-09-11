@@ -17,12 +17,12 @@ const Signup = () => {
   };
 
   return (
-    <div id="signup">
+    <div id="signup2">
       <div id="parentDiv">
         <p>Email</p>
         <div className="inputDiv">
           <span className="imgSpan">
-            <i class="fa-solid fa-user img"></i>
+            <i className="fa-solid fa-user img"></i>
           </span>
           <input
             className="input-field"
@@ -37,7 +37,7 @@ const Signup = () => {
         <p>Username</p>
         <div className="inputDiv">
           <span className="imgSpan">
-            <i class="fa-solid fa-user img"></i>
+            <i className="fa-solid fa-user img"></i>
           </span>
           <input
             className="input-field"
@@ -53,7 +53,7 @@ const Signup = () => {
         <p>Password</p>
         <div className="inputDiv">
           <span className="imgSpan">
-            <i class="fa-solid fa-key img"></i>
+            <i className="fa-solid fa-key img"></i>
           </span>
           <input
             className="input-field"
@@ -68,7 +68,7 @@ const Signup = () => {
         <p>Confirm Password</p>
         <div className="inputDiv">
           <span className="imgSpan">
-            <i class="fa-solid fa-key img"></i>
+            <i className="fa-solid fa-key img"></i>
           </span>
           <input
             className="input-field"

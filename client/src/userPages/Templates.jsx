@@ -191,17 +191,25 @@ const Templates = () => {
           </div>
         )}
       </div>
-      <div id="templateListLong">
-        {JSON.parse(localStorage.getItem("userPages"))
-          .filter((page) => {
-            return page.type === "Header" || (page.type === "Footer" && page);
-          })
-          .map((template, index) => (
-            <div id="templatelistd1" key={index}>
-              <img src={template.src} alt="" />
-            </div>
-          ))}
-      </div>
+      {JSON.parse(localStorage.getItem("userPages")) &&
+        JSON.parse(localStorage.getItem("userPages")).some(
+          (obj) => obj.type === "Header" || obj.type === "Footer"
+        ) && (
+          <div id="templateListLong">
+            {JSON.parse(localStorage.getItem("userPages"))
+              .filter((page) => {
+                return (
+                  page.type === "Header" || (page.type === "Footer" && page)
+                );
+              })
+              .map((template, index) => (
+                <div id="templatelistd1" key={index}>
+                  <img src={template.src} alt="" />
+                </div>
+              ))}
+          </div>
+        )}
+
       <h1>Log in</h1>
       <TemplateList pages={logintemplatePages} />
       <h1>Signup</h1>

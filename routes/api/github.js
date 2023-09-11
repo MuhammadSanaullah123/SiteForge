@@ -150,8 +150,17 @@ router.put("/updateRepo", async (req, res) => {
             let signup = false;
 
             for (const page of userPages) {
-              login = page.type === "Login" && true;
-              signup = page.type === "Signup" && true;
+              console.log("USERPAGES");
+              console.log(page);
+              if (page.type === "Login") {
+                login = page.type === "Login" && true;
+              }
+              if (page.type === "Signup") {
+                signup = page.type === "Signup" && true;
+              }
+
+              console.log(login);
+              console.log(signup);
 
               fileContent = fileContent.replace(
                 new RegExp(`\\/\\*import${page.type}\\*\\/`, "g"),
@@ -201,20 +210,25 @@ router.put("/updateRepo", async (req, res) => {
           }
           const apiEndpoint = `https://api.github.com/repos/${username}/${repoName}/contents/${targetPath}${file}`;
 
-          const response = await fetchWithRetry(apiEndpoint, {
-            method: "PUT",
-            headers: {
-              Authorization: `Bearer ${g_token}`,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              message: `Add ${file}`,
-              content: Buffer.from(fileContent).toString("base64"),
-            }),
-          });
-
-          if (!response.ok) {
-            throw new Error(`Failed to update file ${file} in the repository.`);
+          try {
+            const response = await fetchWithRetry(apiEndpoint, {
+              method: "PUT",
+              headers: {
+                Authorization: `Bearer ${g_token}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                message: `Add ${file}`,
+                content: Buffer.from(fileContent).toString("base64"),
+              }),
+            });
+            if (!response.ok) {
+              throw new Error(
+                `Failed to update file ${file} in the repository.`
+              );
+            }
+          } catch (error) {
+            console.error(error);
           }
         } else if (item.isDirectory()) {
           await pushFolderContents(filePath, `${targetPath}${file}/`);
@@ -231,9 +245,16 @@ router.put("/updateRepo", async (req, res) => {
         __dirname,
         `../../client/src/templates/${userPages[folder].type}`
       );
+
       const files = fs.readdirSync(path_file);
 
       for (const file of files) {
+        console.log("FILE");
+        console.log(file);
+        if (file.split(".")[0] !== userPages[folder].id) {
+          continue;
+        }
+
         const filePath = path.join(path_file, file);
 
         let fileContent = fs.readFileSync(filePath).toString();

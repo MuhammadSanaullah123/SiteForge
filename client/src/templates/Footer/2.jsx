@@ -13,7 +13,7 @@ const Footer = () => {
     setValues({ ...values, [e.target.name]: Value });
   };
   return (
-    <div id="footer">
+    <div id="footer2">
       <div id="footerd1">
         <i
           onClick={() => {
