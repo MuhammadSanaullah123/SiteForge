@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+const path = require("path");
 const dotenv = require("dotenv");
 const app = express();
 dotenv.config();
@@ -22,6 +23,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const PORT = 5000;
+const PORT = process.env.port || 5000;
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
