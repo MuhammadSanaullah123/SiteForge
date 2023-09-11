@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "npm run dev",
+    "start": "node server",
     "server": "nodemon server",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
@@ -20,9 +20,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "node-fetch": "^3.3.1",
-    "concurrently": "^8.2.0",
-    "nodemon": "^3.0.1"
+    "node-fetch": "^3.3.1"
   },
   "devDependencies": {
     "concurrently": "^8.2.0",
