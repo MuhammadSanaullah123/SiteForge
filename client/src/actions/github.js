@@ -21,11 +21,7 @@ export const getUserData = async (accessToken) => {
 // Create Repo on user Github
 export const createRepo = async (name) => {
   try {
-    return await axios.post(
-      `http://127.0.0.1:5000/api/github/createRepo`,
-      { name },
-      {}
-    );
+    return await axios.post(`/api/github/createRepo`, { name }, {});
   } catch (error) {
     console.error(error);
   }
@@ -34,11 +30,7 @@ export const createRepo = async (name) => {
 // Update Repo and push code on user Github
 export const updateRepo = async (updateInput) => {
   try {
-    return await axios.put(
-      `http://127.0.0.1:5000/api/github/updateRepo`,
-      updateInput,
-      {}
-    );
+    return await axios.put(`/api/github/updateRepo`, updateInput, {});
   } catch (error) {
     console.error(error);
   }
