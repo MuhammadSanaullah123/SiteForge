@@ -4,9 +4,6 @@ import { useContact } from "./ContactContext";
 //assets
 import logo from "../assets/logo-no-background.svg";
 
-//components
-import Spinner from "./Spinner";
-
 //api
 import { getAccessToken, getUserData } from "../actions/github";
 

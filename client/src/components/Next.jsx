@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Next = () => {
-  const navigate = useNavigate();
   const handleSave = () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);

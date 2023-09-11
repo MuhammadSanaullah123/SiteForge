@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import Draggable from "react-draggable";
 //color-picker
 import { SketchPicker } from "react-color";
 
@@ -44,26 +44,28 @@ const Customizer = () => {
   }, []);
 
   return (
-    <div id="customizer">
-      <div
-        style={{
-          backgroundColor: `${color}`,
-        }}
-        onClick={() => setOpen(true)}
-        className="colorDiv"
-      >
-        {open && (
-          <div className="sketchPickerClass">
-            <SketchPicker
-              styles={pickerStyle}
-              color={color}
-              onChange={(updatedColor) => setColor(updatedColor.hex)}
-            />
-            <button onClick={handleSubmit}>Submit</button>
-          </div>
-        )}
+    <Draggable>
+      <div id="customizer">
+        <div
+          style={{
+            backgroundColor: `${color}`,
+          }}
+          onClick={() => setOpen(true)}
+          className="colorDiv"
+        >
+          {open && (
+            <div className="sketchPickerClass">
+              <SketchPicker
+                styles={pickerStyle}
+                color={color}
+                onChange={(updatedColor) => setColor(updatedColor.hex)}
+              />
+              <button onClick={handleSubmit}>Submit</button>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </Draggable>
   );
 };
 
