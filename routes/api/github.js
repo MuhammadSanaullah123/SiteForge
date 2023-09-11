@@ -10,7 +10,7 @@ const fetch = (...args) =>
 // @access     Public
 router.get("/getAccessToken", async (req, res) => {
   const params = `?client_id=${process.env.VITE_GITHUB_CLIENT_ID}&client_secret=${process.env.VITE_GITHUB_CLIENT_SECRET}&code=${req.query.code}&redirect_uri=http://127.0.0.1:5173/templates`;
-  res.json(process.env.VITE_GITHUB_CLIENT_SECRET);
+
   await fetch(`https://github.com/login/oauth/access_token${params}`, {
     method: "POST",
     headers: {
@@ -28,6 +28,7 @@ router.get("/getAccessToken", async (req, res) => {
         expires: new Date(Date.now() + 1800 * 1000),
         path: "/",
       });
+      res.json(data.access_token);
       res.json("Login Successfull");
     })
     .catch((error) => {
