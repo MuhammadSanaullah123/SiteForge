@@ -3,9 +3,7 @@ axios.defaults.withCredentials = true;
 // Get Access Token of user
 export const getAccessToken = async (codeParams) => {
   try {
-    return await axios.get(
-      `http://127.0.0.1:5000/api/github/getAccessToken?code=${codeParams}`
-    );
+    return await axios.get(`/api/github/getAccessToken?code=${codeParams}`);
   } catch (error) {
     console.error(error);
   }
@@ -14,7 +12,7 @@ export const getAccessToken = async (codeParams) => {
 // Get data of user
 export const getUserData = async (accessToken) => {
   try {
-    return await axios.get(`http://127.0.0.1:5000/api/github/getUserData`);
+    return await axios.get(`/api/github/getUserData`);
   } catch (error) {
     console.error(error);
   }
