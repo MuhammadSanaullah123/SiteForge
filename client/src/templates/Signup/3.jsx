@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 //css
 import "./3.scss";
@@ -77,6 +78,7 @@ const Login = () => {
             <i className="fa-brands fa-google"></i>Login with Google
           </button>
         </form>
+        <Link to="/login">Login?</Link>
       </div>
     </div>
   );
