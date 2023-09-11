@@ -9,7 +9,7 @@ const fetch = (...args) =>
 // @desciption Authenticating and Getting access token
 // @access     Public
 router.get("/getAccessToken", async (req, res) => {
-  const params = `?client_id=${process.env.VITE_GITHUB_CLIENT_ID}&client_secret=${process.env.VITE_GITHUB_CLIENT_SECRET}&code=${req.query.code}&redirect_uri=http://127.0.0.1:5173/templates`;
+  const params = `?client_id=${process.env.VITE_GITHUB_CLIENT_ID}&client_secret=${process.env.VITE_GITHUB_CLIENT_SECRET}&code=${req.query.code}&redirect_uri=https://siteforge-dcd443189d34.herokuapp.com/templates`;
 
   await fetch(`https://github.com/login/oauth/access_token${params}`, {
     method: "POST",
@@ -21,7 +21,6 @@ router.get("/getAccessToken", async (req, res) => {
       return response.json();
     })
     .then((data) => {
-      res.json(data.access_token);
       res.cookie("g_token", data.access_token, {
         httpOnly: true,
         secure: true,
