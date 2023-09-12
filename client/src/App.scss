@@ -619,6 +619,7 @@
   @media (max-width: 370px) {
     #footerd3 {
       flex-direction: column;
+      align-items: center;
     }
   }
 }
@@ -631,7 +632,7 @@
   display: flex;
   flex-direction: column;
   width: 300px;
-
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -641,6 +642,11 @@
   z-index: 100;
   padding: 10px;
   justify-content: space-around;
+  @media (max-width: 400px) {
+    width: 85%;
+    opacity: 1;
+    right: 5%;
+  }
   #headingdiv {
     width: 90%;
     align-self: center;
@@ -746,6 +752,11 @@
   padding: 20px 10px 10px 10px;
   #homed1 {
     display: flex;
+    @media (max-width: 530px) {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
     div {
       display: flex;
       flex-direction: column;
@@ -783,6 +794,10 @@
         width: 50%;
         height: 50%;
       }
+      @media (max-width: 530px) {
+        width: 80%;
+        height: 80%;
+      }
     }
     #screenimg:hover {
       transform: rotate(360deg);
@@ -801,6 +816,15 @@
         margin: 0;
       }
     }
+    @media (max-width: 530px) {
+      #textDiv {
+        width: auto;
+        margin-top: 20px;
+        #homed1span {
+          width: 90%;
+        }
+      }
+    }
   }
   #homed2 {
     padding: 10px 10px 25px 10px;
@@ -809,6 +833,9 @@
     flex-direction: column;
     background: #ffffff;
     box-shadow: 0px 0px 12px rgb(0 0 0 / 25%);
+    @media (max-width: 400px) {
+      align-items: center;
+    }
     .homed2h1 {
       font-family: "Inter";
       font-size: 30px;
@@ -849,8 +876,16 @@
       padding: 10px;
       margin-top: 20px;
       align-items: center;
-      @media (max-width: 350px) {
+
+      @media (max-width: 400px) {
         flex-direction: column;
+        margin-bottom: 10px;
+        .netlifypic {
+          width: 8rem !important;
+        }
+        .homed2pic {
+          margin-bottom: 5px;
+        }
       }
       .homed2pic {
         color: var(--primary);
@@ -868,6 +903,10 @@
         margin-left: 25px;
         @media (max-width: 350px) {
           align-items: center;
+        }
+        @media (max-width: 400px) {
+          margin-left: 0;
+          text-align: center;
         }
         .homed2sectionh1 {
           font-family: "Inter";

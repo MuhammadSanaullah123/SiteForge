@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div id="home">
       <div id="homed1">
-        <div>
+        <div id="textDiv">
           <h1 id="homed1h1">Let's</h1>
           <h1 id="homed1h2">Start</h1>
           <h1 id="homed1h3">Building</h1>
@@ -56,7 +56,11 @@ const Home = () => {
           </div>
         </div>
         <div className="homed2section">
-          <img className="homed2pic" src={netlify} alt="Logo of Netlify" />
+          <img
+            className="homed2pic netlifypic"
+            src={netlify}
+            alt="Logo of Netlify"
+          />
           <div className="homed2sectiond1">
             <h1 className="homed2sectionh1">Deploy on Netlify</h1>
             <p className="homed2sectionp1">
