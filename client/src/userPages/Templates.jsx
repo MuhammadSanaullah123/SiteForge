@@ -44,6 +44,7 @@ const Templates = () => {
   const [warning, setWarning] = useState(false);
   const [createdAlert, setCreatedAlert] = useState(false);
   const [updatedAlert, setUpdatedAlert] = useState(false);
+  const [LoginAlert, setLoginAlert] = useState(false);
 
   const handleUpdate = async () => {
     let customCode = JSON.parse(sessionStorage.getItem("customCode"));
@@ -80,6 +81,10 @@ const Templates = () => {
 
   const handleSubmit = async () => {
     event.preventDefault();
+    if (sessionStorage.getItem("login") === null) {
+      setLoginAlert(true);
+      return;
+    }
     setShowModal(false);
     setLoadingModal(true);
     if (value.repo === "New") {
@@ -394,6 +399,14 @@ const Templates = () => {
           type="success"
           time={3000}
           setShowAlert={setUpdatedAlert}
+        />
+      )}
+      {LoginAlert && (
+        <Alert
+          message="Not Logged In!"
+          type="danger"
+          time={3000}
+          setShowAlert={setLoginAlert}
         />
       )}
     </div>
