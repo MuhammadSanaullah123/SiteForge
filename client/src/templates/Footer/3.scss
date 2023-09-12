@@ -7,6 +7,7 @@
   justify-content: space-around;
   border: 1px solid rgba(0, 0, 0, 0.47);
   column-gap: 50px;
+  margin-top: 50px;
   @media (max-width: 600px) {
     column-gap: 0;
   }
